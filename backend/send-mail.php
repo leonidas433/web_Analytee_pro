@@ -2,13 +2,33 @@
 
 $config = require __DIR__ . '/smtp-config.php';
 
+// Configuración de logs y timeouts
+define('SMTP_LOG_FILE', __DIR__ . '/logs/mail_errors.log');
+define('SMTP_TIMEOUT', 10);
+
+function log_smtp_error($msg) {
+    $date = date('Y-m-d H:i:s');
+    $logMsg = "[$date] $msg" . PHP_EOL;
+    error_log($logMsg, 3, SMTP_LOG_FILE);
+}
+
 /* =============================
    Funciones SMTP (IONOS)
    ============================= */
 
 function smtp_read($conn) {
     $response = '';
-    while ($line = fgets($conn, 515)) {
+    $info = stream_get_meta_data($conn);
+    
+    while (!feof($conn) && !$info['timed_out']) {
+        $line = fgets($conn, 515);
+        $info = stream_get_meta_data($conn);
+        
+        if ($info['timed_out']) {
+            log_smtp_error("SMTP Read Timeout");
+            return false;
+        }
+        
         $response .= $line;
         if (preg_match('/^\d{3} /', $line)) break;
     }
@@ -16,16 +36,38 @@ function smtp_read($conn) {
 }
 
 function smtp_cmd($conn, $cmd, $expect) {
-    fwrite($conn, $cmd);
+    if ($cmd !== "") {
+        fwrite($conn, $cmd);
+    }
     $resp = smtp_read($conn);
-    return strpos($resp, (string)$expect) === 0 ? $resp : false;
+    
+    if ($resp === false) return false;
+    
+    if (strpos($resp, (string)$expect) !== 0) {
+        // Log solo si no es el cierre de conexión normal
+        if ($cmd !== "QUIT\r\n") {
+            log_smtp_error("SMTP Error. CMD: " . trim($cmd) . " | RESP: " . trim($resp));
+        }
+        return false;
+    }
+    return $resp;
 }
 
 function sendSMTP($to, $subject, $body, $config) {
-    $conn = fsockopen("ssl://".$config['host'], $config['port'], $errno, $errstr, 15);
-    if (!$conn) return ['status'=>'error','message'=>"No se pudo conectar: $errstr"];
+    $conn = fsockopen("ssl://".$config['host'], $config['port'], $errno, $errstr, SMTP_TIMEOUT);
+    
+    if (!$conn) {
+        log_smtp_error("Connection failed: $errstr ($errno)");
+        return ['status'=>'error','message'=>"No se pudo conectar al servidor de correo"];
+    }
 
-    smtp_read($conn);
+    stream_set_timeout($conn, SMTP_TIMEOUT);
+
+    $initial = smtp_read($conn);
+    if ($initial === false) {
+        fclose($conn);
+        return ['status'=>'error','message'=>"Timeout esperando saludo SMTP"];
+    }
 
     $steps = [
         ["EHLO analytee.com\r\n", 250],
@@ -38,8 +80,9 @@ function sendSMTP($to, $subject, $body, $config) {
     ];
 
     foreach ($steps as [$cmd,$exp]) {
-        if (!smtp_cmd($conn,$cmd,$exp)) {
-            return ['status'=>'error','message'=>"Error SMTP en $cmd"];
+        if (smtp_cmd($conn,$cmd,$exp) === false) {
+            fclose($conn);
+            return ['status'=>'error','message'=>"Error técnico enviando correo"];
         }
     }
 
@@ -57,8 +100,10 @@ function sendSMTP($to, $subject, $body, $config) {
         $body . "\r\n.\r\n"
     );
 
-    if (!smtp_cmd($conn, "", 250)) {
-        return ['status'=>'error','message'=>"IONOS rechazó el mensaje"];
+    if (smtp_cmd($conn, "", 250) === false) {
+        log_smtp_error("Mensaje rechazado tras envío de DATA");
+        fclose($conn);
+        return ['status'=>'error','message'=>"El servidor de correo rechazó el mensaje"];
     }
 
     fwrite($conn, "QUIT\r\n");
