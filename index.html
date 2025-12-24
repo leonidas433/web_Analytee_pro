@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- CSS inline eliminado y movido a clases Tailwind -->
+
+
+  <!-- Google Analytics - Solo se carga con consentimiento explícito -->
+  <script>
+    // Función para cargar Google Analytics solo con consentimiento
+    function loadGoogleAnalytics() {
+      if (typeof gtag === 'undefined') {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-538XVXQ0YV';
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-538XVXQ0YV');
+      }
+    }
+    
+    // Verificar consentimiento existente
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+      loadGoogleAnalytics();
+    }
+    
+    // Escuchar eventos de consentimiento
+    document.addEventListener('cookie-consent-accepted', loadGoogleAnalytics);
+  </script>
+
+  <!-- Tema oscuro automático -->
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+  <!-- Metadatos básicos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO principal del archivo base -->
+  <title>Analytee - Análisis de Reseñas de Google con IA para Estrategia ORM y CX</title>
+  <meta name="description" content="Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.">
+  <meta name="theme-color" content="#004AAD">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Analytee - Análisis de Reseñas de Google con IA para Estrategia ORM y CX">
+  <meta property="og:description" content="Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.">
+  <meta property="og:image" content="https://analytee.com/android-chrome-512x512.png">
+  <meta property="og:url" content="https://analytee.com/">
+  <meta property="og:site_name" content="Analytee">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Analytee - Análisis de Reseñas de Google con IA para Estrategia ORM y CX">
+  <meta name="twitter:description" content="Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.">
+  <meta name="twitter:image" content="https://analytee.com/android-chrome-512x512.png">
+
+  <!-- Iconos -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Performance hints -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Preload imágenes y fuentes -->
+  <link rel="preload" href="/public/assets/hero.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="/public/assets/hero.png" as="image" type="image/png" fetchpriority="high">
+  <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+          rel="stylesheet">
+  </noscript>
+
+  <!-- Compiled Tailwind CSS - Performance Optimized -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Font Awesome - Async Load (Optimized) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
+  </noscript>
+
+  <!-- Critical CSS for Hero LCP - Inline for immediate render -->
+  <style>
+    /* Minimalist critical CSS for hero section - prevents layout shift */
+    #hero {
+      position: relative;
+      overflow: hidden;
+    }
+    #hero img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-container {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+  </style>
+
+  <!-- CSS crítico y animaciones -->
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #004AAD; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #003885; }
+
+    body { font-family: 'Roboto', sans-serif; color: #4A4A4A; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Fira Sans', sans-serif; }
+
+    @keyframes spinGrow {
+      0%   { transform: scale(1) rotate(0deg); }
+      20%  { transform: scale(1.4) rotate(720deg); }
+      50%  { transform: scale(1.8) rotate(2160deg); }
+      100% { transform: scale(1) rotate(2160deg); }
+    }
+    .star-spin-grow {
+      animation: spinGrow 0.9s cubic-bezier(0.3, 0.7, 0.4, 1.2) forwards;
+    }
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+      transform: skewX(-20deg);
+      opacity: 0;
+    }
+    .bar-active .shine {
+      animation: shineMove 1.6s ease-in-out forwards;
+    }
+    @keyframes shineMove {
+      0%   { left: -40%; opacity: 0; }
+      20%  { opacity: 1; }
+      100% { left: 120%; opacity: 0; }
+    }
+  </style>
+
+  <!-- Mejora de contraste para accesibilidad AAA -->
+  <style>
+    :focus-visible {
+      outline: 3px solid #4CAF50;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+    
+    .dark :focus-visible {
+      outline-color: #4CAF50;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    .sr-only:focus {
+      position: absolute;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 1rem;
+      margin: 0;
+      clip: auto;
+      white-space: normal;
+      background-color: #004AAD;
+      color: white;
+      border-radius: 0.5rem;
+      z-index: 50;
+    }
+  </style>
+
+  <!-- Seguridad y mobile -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Analytee">
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Analytee",
+    "url": "https://analytee.com/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Plataforma de análisis de reseñas de Google Maps con Inteligencia Artificial para estrategia ORM y CX.",
+    "image": "https://analytee.com/android-chrome-512x512.png",
+    "creator": { "@type": "Organization", "name": "Analytee" }
+  }
+  </script>
+</head>
+
+<body class="bg-white dark:bg-[#121212] text-[#4A4A4A] dark:text-[#E0E0E0] font-body overflow-x-hidden">
+  <!-- Skip to main content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only fixed top-2 left-2 bg-[#004AAD] text-white px-4 py-2 rounded-lg z-50" data-i18n="accessibility_skip_content">Saltar al contenido</a>
+
+<!-- ========================= -->
+<!-- SECTION: Header (ID: header) -->
+<!-- ========================= -->
+<!-- START SECTION: header -->
+<header id="header" role="banner" class="fixed top-0 left-0 w-full z-[9999] bg-white/95 dark:bg-[#121212]/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 shadow-sm">
+    <nav aria-label="Navegación principal" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center cursor-pointer">
+                <img src="images/logo.png" alt="Logo de Analytee" class="w-10 h-10 object-contain mr-3" loading="lazy" />
+                <span class="font-bold text-2xl text-[#004AAD] dark:text-[#00C4FF] tracking-tight">Analytee</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="#sobre-nosotros" class="text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] font-medium transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded px-2 py-1" data-i18n="nosotros">Nosotros</a>
+                <a href="#methodology" class="text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] font-medium transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded px-2 py-1" data-i18n="metodologia">Metodología</a>
+                <a href="#cases" class="text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] font-medium transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded px-2 py-1" data-i18n="casos-exito">Casos de Éxito</a>
+                <a href="#faqs" class="text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] font-medium transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded px-2 py-1" data-i18n="faqs">FAQs</a>
+                <a href="#contact" class="text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] font-medium transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded px-2 py-1" data-i18n="contacto">Contacto</a>
+            </div>
+
+            <!-- CTA y Controles -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#free-analysis" class="bg-[#004AAD] hover:bg-[#003885] text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-[#004AAD]/30 transition-all duration-300 hover:-translate-y-1" data-i18n="header_cta_free_analysis">
+                    Solicita Análisis Gratuito
+                </a>
+                
+                <!-- Language Selector -->
+                <div class="lang-selector-desktop flex items-center gap-2">
+                    <button class="btn-lang active-lang text-xs font-semibold text-slate-700 dark:text-white transition-colors"
+                            data-lang="es" aria-label="Cambiar idioma a español">
+                        ES
+                    </button>
+                    <span class="opacity-50 dark:text-[#E0E0E0]">|</span>
+                    <button class="btn-lang text-xs font-semibold text-slate-700 dark:text-white opacity-50 transition-colors"
+                            data-lang="en" aria-label="Change language to English">
+                        EN
+                    </button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 ease-in-out transform" aria-label="Alternar tema">
+                    <i class="fa-solid fa-sun" id="sun-icon"></i>
+                    <i class="fa-solid fa-moon hidden" id="moon-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="lg:hidden flex items-center space-x-2">
+                <!-- Language Selector Mobile -->
+                <div class="lang-selector-mobile flex items-center gap-2">
+                    <button class="btn-lang active-lang text-xs font-semibold text-slate-700 dark:text-white transition-colors hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded"
+                            data-lang="es" aria-label="Cambiar idioma a español">
+                        ES
+                    </button>
+                    <span class="opacity-50 dark:text-[#E0E0E0]">|</span>
+                    <button class="btn-lang text-xs font-semibold text-slate-700 dark:text-white opacity-50 transition-colors hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#004AAD] rounded"
+                            data-lang="en" aria-label="Change language to English">
+                        EN
+                    </button>
+                </div>
+                
+                <button id="mobile-menu-button" aria-label="Abrir menú de navegación"
+                        class="p-2 rounded-lg text-slate-800 dark:text-[#E0E0E0] focus:outline-none focus:ring-2 focus:ring-[#004AAD] transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block transition-all duration-300" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden transition-all duration-300" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- END SECTION: header -->
+
+<!-- START SECTION: mobile-menu -->
+<div id="mobile-menu"
+     class="fixed top-20 left-0 right-0 z-50 flex flex-col gap-4 p-6 bg-white dark:bg-[#1E1E1E] shadow-xl text-slate-800 dark:text-[#E0E0E0] hidden lg:hidden max-h-[calc(100vh-5rem)] overflow-y-auto transition-all duration-300 ease-in-out transform"
+     role="navigation" aria-label="Menú móvil de navegación">
+    <div class="space-y-2">
+        <a href="#sobre-nosotros" class="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-[#004AAD]" data-i18n="nosotros">Nosotros</a>
+        <a href="#methodology" class="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-[#004AAD]" data-i18n="metodologia">Metodología</a>
+        <a href="#cases" class="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-[#004AAD]" data-i18n="casos-exito">Casos de Éxito</a>
+        <a href="#faqs" class="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-[#004AAD]" data-i18n="faqs">FAQs</a>
+        <a href="#contact" class="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-[#004AAD]" data-i18n="contacto">Contacto</a>
+    </div>
+    <div class="pt-4 border-t border-gray-200 dark:border-gray-600">
+        <a href="#free-analysis" class="block w-full bg-[#004AAD] dark:bg-[#004AAD] text-white px-6 py-3 rounded-full hover:bg-[#003885] transition-all duration-200 font-medium text-center focus:outline-none focus:ring-2 focus:ring-[#00C4FF] transform hover:scale-105" data-i18n="mobile_cta_free_analysis">
+            Solicita Análisis Gratuito
+        </a>
+    </div>
+</div>
+<!-- END SECTION: mobile-menu -->
+
+<!-- ========================= -->
+<!-- SECTION: Main Content -->
+<!-- ========================= -->
+<main id="main-content">
+    <!-- START SECTION: hero -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-blue-50/50 to-white dark:from-[#121212] dark:to-[#1E1E1E]">
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-[#00C4FF]/10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-[#004AAD]/10 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-[#004AAD] dark:text-[#00C4FF] text-sm font-semibold mb-6 border border-blue-100 dark:border-blue-800">
+                        <span class="w-2 h-2 rounded-full bg-[#00C4FF] mr-2 animate-pulse"></span>
+                        <span data-i18n="hero_new_feature">Nuevo: Motor de Análisis IA v2.0</span>
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900 dark:text-white">
+                        <span data-i18n="hero_title_part1">Transforma tus Reseñas en</span> <br>
+                        <span class="bg-gradient-to-r from-[#004AAD] to-[#00C4FF] bg-clip-text text-transparent" data-i18n="hero_title_part2">Estrategias de Crecimiento</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_description">
+                        Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#free-analysis" class="bg-[#004AAD] hover:bg-[#003885] text-white px-8 py-4 rounded-lg font-bold text-lg shadow-xl shadow-[#004AAD]/20 flex items-center justify-center group transition-all duration-300 hover:-translate-y-1">
+                            <span data-i18n="hero_main_cta">Solicita tu Informe Gratuito</span>
+                            <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#cases" class="bg-white dark:bg-[#1E1E1E] text-[#004AAD] dark:text-[#00C4FF] px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center border-2 border-[#004AAD] dark:border-[#00C4FF] hover:bg-gray-50 dark:hover:bg-[#2D2D2D] transition">
+                            <i class="fa-solid fa-play mr-2 text-sm"></i> <span data-i18n="hero_secondary_cta">Ver Casos de Éxito</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-10 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500 dark:text-gray-400 font-medium">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-check text-[#38B000] mr-2"></i> <span data-i18n="hero_benefit1">Sin tarjeta de crédito</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-check text-[#38B000] mr-2"></i> <span data-i18n="hero_benefit2">Resultados en 24h</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-check text-[#38B000] mr-2"></i> <span data-i18n="hero_benefit3">+500 Empresas Analizadas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual/Dashboard Preview -->
+                <div class="relative lg:h-[600px] w-full flex items-center justify-center">
+                    <div class="relative w-full max-w-lg lg:max-w-full bg-white dark:bg-[#1E1E1E] rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-2 overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <!-- Mockup Header -->
+                        <div class="bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between rounded-t-xl">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="text-xs font-mono text-gray-400 dark:text-gray-500">analytee-dashboard.app</div>
+                        </div>
+                        <!-- Mockup Content -->
+                        <div class="p-6 bg-white dark:bg-[#1E1E1E]">
+                            <div class="flex justify-between items-center mb-6">
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-800 dark:text-white" data-i18n="dashboard_reputation_summary">Resumen de Reputación</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="dashboard_last_30_days">Últimos 30 días</p>
+                                </div>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/20 text-[#38B000] dark:text-green-400 text-xs font-bold rounded-full" data-i18n="dashboard_excellent_rating">Excelente +4.8</span>
+                            </div>
+                            
+                            <!-- Chart Placeholder -->
+                            <div id="hero-chart" class="h-[250px] w-full mb-6"></div>
+                            
+                            <!-- Sentiment Cards -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-100 dark:border-green-800">
+                                    <div class="text-[#38B000] dark:text-green-400 text-2xl font-bold mb-1">84%</div>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400 font-medium" data-i18n="dashboard_positive_sentiment">Sentimiento Positivo</div>
+                                </div>
+                                <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-100 dark:border-orange-800">
+                                    <div class="text-[#FF8A00] dark:text-orange-400 text-2xl font-bold mb-1">12%</div>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400 font-medium" data-i18n="dashboard_moderate_risk">Riesgo Moderado</div>
+                                </div>
+                                <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-100 dark:border-red-800">
+                                    <div class="text-[#E71D36] dark:text-red-400 text-2xl font-bold mb-1">4%</div>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400 font-medium" data-i18n="dashboard_critical">Crítico</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white dark:bg-[#1E1E1E] p-4 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 max-w-xs animate-bounce" style="animation-duration: 3s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#00C4FF]/20 dark:bg-[#00C4FF]/10 flex items-center justify-center text-[#004AAD] dark:text-[#00C4FF]">
+                                <img src="images/logo.png" alt="Logo de Analytee" class="w-6 h-6 object-contain" loading="lazy">
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400" data-i18n="dashboard_ai_insight_label">Insight IA Detectado</div>
+                                <div class="text-sm font-bold text-gray-800 dark:text-white" data-i18n="dashboard_ai_insight_text">"Tiempo de espera" afecta NPS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: hero -->
+
+    <!-- SECTION: hero-charts (Deferred rendering - not LCP) -->
+    <section id="hero-charts" class="bg-gray-50 dark:bg-[#1A1A1A] py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="hero-chart" class="h-[300px] w-full mb-8 bg-white dark:bg-[#1E1E1E] rounded-lg shadow-md p-4"></div>
+        </div>
+    </section>
+
+    <!-- START SECTION: logos -->
+    <section class="py-10 border-y border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-[#1E1E1E]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-8" data-i18n="logos_title">Empresas que confían en nuestra tecnología</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Using FontAwesome as placeholder logos for corporate feel -->
+                <div class="flex justify-center items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><i class="fa-brands fa-google text-2xl"></i> Partner</div>
+                <div class="flex justify-center items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><i class="fa-solid fa-building-columns text-2xl"></i> BankCorp</div>
+                <div class="flex justify-center items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><i class="fa-solid fa-hotel text-2xl"></i> LuxuryStays</div>
+                <div class="flex justify-center items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><i class="fa-solid fa-utensils text-2xl"></i> GastroGroup</div>
+                <div class="flex justify-center items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400 hidden lg:flex"><i class="fa-solid fa-plane text-2xl"></i> AeroTravel</div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: logos -->
+
+    <!-- START SECTION: pain-points -->
+    <section id="pain-points" class="py-20 bg-white dark:bg-[#121212]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="painpoints_title">¿Tu reputación online te está costando clientes?</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300" data-i18n="painpoints_subtitle">La gestión manual de reseñas es ineficiente y lenta. Mientras ignoras los datos, tu competencia toma ventaja.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pain Point 1 -->
+                <div class="bg-white dark:bg-[#1E1E1E] p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-50 dark:bg-red-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-red-100 dark:bg-red-900/20 text-[#E71D36] dark:text-red-400 rounded-xl flex items-center justify-center text-2xl mb-6 relative z-10">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white" data-i18n="painpoints1_title">Puntos Ciegos Operativos</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="painpoints1_description">
+                        Sin análisis de datos, no sabes realmente por qué los clientes se quejan. ¿Es el servicio? ¿El producto? ¿El precio? Adivinar sale caro.
+                    </p>
+                </div>
+
+                <!-- Pain Point 2 -->
+                <div class="bg-white dark:bg-[#1E1E1E] p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-50 dark:bg-orange-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 text-[#FF8A00] dark:text-orange-400 rounded-xl flex items-center justify-center text-2xl mb-6 relative z-10">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white" data-i18n="painpoints2_title">Gestión Reactiva y Lenta</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="painpoints2_description">
+                        Responder reseñas días tarde daña tu imagen. La falta de alertas en tiempo real permite que una crisis pequeña se convierta en un desastre de PR.
+                    </p>
+                </div>
+
+                <!-- Pain Point 3 -->
+                <div class="bg-white dark:bg-[#1E1E1E] p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 dark:bg-blue-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/20 text-[#004AAD] dark:text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 relative z-10">
+                        <i class="fa-solid fa-chart-line-down"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white" data-i18n="painpoints3_title">Pérdida de Oportunidades</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="painpoints3_description">
+                        Cada reseña negativa sin resolver es un cliente perdido para siempre. Y peor aún, disuade a cientos de potenciales clientes que te buscan en Google.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: pain-points -->
+
+    <!-- START SECTION: methodology -->
+    <section id="methodology" class="py-20 bg-[#4A4A4A] text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-[#00C4FF] font-bold tracking-widest uppercase text-sm" data-i18n="methodology_label">Metodología Analytee</span>
+                <h2 class="text-3xl lg:text-5xl font-bold mt-3 mb-6"><span data-i18n="methodology_title_part1">De Datos Caóticos a</span> <span class="text-[#00C4FF]" data-i18n="methodology_title_part2">Estrategia Clara</span></h2>
+                <p class="text-gray-300 max-w-2xl mx-auto text-lg" data-i18n="methodology_subtitle">Nuestro motor de IA procesa el lenguaje natural para entender el sentimiento detrás de cada palabra.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="absolute -top-6 left-8 bg-[#00C4FF] text-[#004AAD] font-bold text-xl w-12 h-12 rounded-lg flex items-center justify-center shadow-lg shadow-[#00C4FF]/50">
+                            01
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n="methodology_step1_title">Recolección & Análisis</h3>
+                            <p class="text-gray-400 mb-6" data-i18n="methodology_step1_description">
+                                Conectamos con tu perfil de Google Business y extraemos años de histórico. Nuestra IA categoriza cada mención por tema (precio, atención, limpieza, etc.).
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step1_feature1">Scraping seguro de datos</span></li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step1_feature2">NLP (Procesamiento de Lenguaje Natural)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden lg:block absolute top-1/2 -right-6 w-12 h-[2px] bg-gradient-to-r from-[#00C4FF] to-transparent"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="absolute -top-6 left-8 bg-[#00C4FF] text-[#004AAD] font-bold text-xl w-12 h-12 rounded-lg flex items-center justify-center shadow-lg shadow-[#00C4FF]/50">
+                            02
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n="methodology_step2_title">Diagnóstico Semáforo</h3>
+                            <p class="text-gray-400 mb-6" data-i18n="methodology_step2_description">
+                                Visualiza al instante qué áreas de tu negocio están en <span class="text-[#38B000] font-bold">Verde</span> (Éxito), <span class="text-[#FF8A00] font-bold">Naranja</span> (Alerta) o <span class="text-[#E71D36] font-bold">Rojo</span> (Crítico).
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step2_feature1">Matriz de Impacto vs Urgencia</span></li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step2_feature2">Detección de anomalías</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Connector Line (Desktop) -->
+                     <div class="hidden lg:block absolute top-1/2 -right-6 w-12 h-[2px] bg-gradient-to-r from-[#00C4FF] to-transparent"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="absolute -top-6 left-8 bg-[#00C4FF] text-[#004AAD] font-bold text-xl w-12 h-12 rounded-lg flex items-center justify-center shadow-lg shadow-[#00C4FF]/50">
+                            03
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n="methodology_step3_title">Plan de Acción</h3>
+                            <p class="text-gray-400 mb-6" data-i18n="methodology_step3_description">
+                                No solo te damos datos, te damos soluciones. Recibe un informe con pasos concretos para revertir tendencias negativas y potenciar lo positivo.
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step3_feature1">Recomendaciones operativas</span></li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-[#00C4FF] mr-2"></i> <span data-i18n="methodology_step3_feature2">Plantillas de respuesta IA</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: methodology -->
+
+    <section id="sobre-nosotros" class="py-24 bg-white dark:bg-[#121212] text-slate-800 dark:text-[#E0E0E0]">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-8" data-i18n="sn-h1">
+                Consultoría Estratégica en Reputación Online (ORM) y CX Impulsada por IA
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-10">
+
+                <div class="space-y-6 text-lg leading-relaxed">
+                    <p data-i18n="sn-intro">
+                        En Analytee transformamos grandes volúmenes de reseñas en decisiones claras y accionables. Eliminamos la gestión manual y revelamos patrones que impactan directamente en la reputación y el crecimiento.
+                    </p>
+
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li data-i18n="sn-punto1">
+                            Identificamos insights ocultos que las empresas no pueden detectar manualmente.
+                        </li>
+                        <li data-i18n="sn-punto2">
+                            Detectamos reseñas fraudulentas y protegemos la credibilidad del perfil.
+                        </li>
+                        <li data-i18n="sn-punto3">
+                            Analizamos sentimiento con precisión +96% optimizada para español.
+                        </li>
+                        <li data-i18n="sn-punto4">
+                            Priorizamos acciones mediante Matriz Urgencia–Impacto para mejorar KPIs reales.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6 text-lg leading-relaxed">
+
+                    <p data-i18n="sn-metodo">
+                        Combinamos IA + análisis humano para generar informes estratégicos que orientan decisiones de dirección, marketing y CX.
+                    </p>
+
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li data-i18n="sn-punto5">
+                            Clasificación automática por temas de fricción (atención, calidad, precio, citas).
+                        </li>
+                        <li data-i18n="sn-punto6">
+                            Informe Ejecutivo con KPIs clave, Semáforo Reputacional y Plan de Acción SMART.
+                        </li>
+                        <li data-i18n="sn-punto7">
+                            Metodología aplicada tanto a grandes entidades como CaixaBank como a negocios de alto volumen.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#contacto"
+                   class="inline-block bg-primary dark:bg-[#4CAF50] text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-primaryDark dark:hover:bg-[#45A049] transition"
+                   data-i18n="sn-cta">
+                    Solicita tu Análisis Gratuito
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- START SECTION: cases -->
+    <section id="cases" class="py-20 bg-gray-50 dark:bg-[#1E1E1E]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="cases_title">Resultados Reales en Sectores Exigentes</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300" data-i18n="cases_subtitle">Descubre cómo empresas líderes utilizan Analytee para mejorar su CX.</p>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center text-[#004AAD] dark:text-[#00C4FF] font-bold hover:text-blue-700 dark:hover:text-blue-400 mt-4 md:mt-0" data-i18n="cases_view_all">
+                    Ver todos los casos <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Case Study 1 -->
+                <div class="bg-white dark:bg-[#1E1E1E] rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <span class="bg-[#00C4FF] text-[#004AAD] text-xs font-bold px-2 py-1 rounded mb-2 inline-block" data-i18n="cases1_category">Hostelería</span>
+                            <h3 class="text-xl font-bold" data-i18n="cases1_title">Cadena Hotelera "VistaMar"</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="grid grid-cols-3 gap-4 mb-6 border-b border-gray-100 dark:border-gray-700 pb-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-[#38B000]">+15%</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases1_metric1">NPS Score</div>
+                            </div>
+                            <div class="text-center border-l border-gray-100 dark:border-gray-700">
+                                <div class="text-2xl font-bold text-[#004AAD]">-40%</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases1_metric2">Quejas Recurrentes</div>
+                            </div>
+                            <div class="text-center border-l border-gray-100 dark:border-gray-700">
+                                <div class="text-2xl font-bold text-[#4A4A4A]">4.8</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases1_metric3">Rating Google</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 flex-1" data-i18n="cases1_testimonial">
+                            "Analytee nos permitió identificar que el 'Check-in lento' era la causa del 60% de nuestras reseñas negativas. Implementamos cambios operativos y el impacto fue inmediato."
+                        </p>
+                        <div class="flex items-center mt-auto">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="CEO" class="w-10 h-10 rounded-full mr-3" loading="lazy">
+                            <div>
+                                <div class="text-sm font-bold text-gray-900 dark:text-white" data-i18n="cases1_name">Carlos M.</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400" data-i18n="cases1_role">Director de Operaciones</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="bg-white dark:bg-[#1E1E1E] rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1415&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <span class="bg-[#00C4FF] text-[#004AAD] text-xs font-bold px-2 py-1 rounded mb-2 inline-block" data-i18n="cases2_category">Banca Retail</span>
+                            <h3 class="text-xl font-bold" data-i18n="cases2_title">Banco Futuro</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="grid grid-cols-3 gap-4 mb-6 border-b border-gray-100 dark:border-gray-700 pb-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-[#38B000]">24h</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases2_metric1">Tiempo Respuesta</div>
+                            </div>
+                            <div class="text-center border-l border-gray-100 dark:border-gray-700">
+                                <div class="text-2xl font-bold text-[#004AAD]">98%</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases2_metric2">Tasa Respuesta</div>
+                            </div>
+                            <div class="text-center border-l border-gray-100 dark:border-gray-700">
+                                <div class="text-2xl font-bold text-[#4A4A4A]">+22%</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 uppercase" data-i18n="cases2_metric3">Conversión</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 flex-1" data-i18n="cases2_testimonial">
+                            "La capacidad de segmentar reseñas por sucursal nos dio una visión granular que ningún otro software nos ofrecía. Esencial para nuestra estrategia CX."
+                        </p>
+                        <div class="flex items-center mt-auto">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="CMO" class="w-10 h-10 rounded-full mr-3" loading="lazy">
+                            <div>
+                                <div class="text-sm font-bold text-gray-900 dark:text-white" data-i18n="cases2_name">Ana P.</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400" data-i18n="cases2_role">Directora de Marketing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile View All Link -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="text-[#004AAD] dark:text-[#00C4FF] font-bold hover:text-blue-700 dark:hover:text-blue-400" data-i18n="cases_mobile_view_all">
+                    Ver todos los casos <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: cases -->
+
+    <!-- START SECTION: feature-showoff -->
+    <section class="py-20 bg-white dark:bg-[#121212]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="relative h-[400px] bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-4 shadow-inner">
+                         <!-- Chart Container -->
+                         <div id="feature-chart" class="w-full h-full"></div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6" data-i18n="feature_title">Visualiza tus KPIs en Tiempo Real</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8" data-i18n="feature_subtitle">
+                        Nuestro dashboard interactivo te permite monitorear la salud de tu marca con métricas precisas.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center flex-shrink-0 text-[#004AAD] dark:text-blue-400 text-xl">
+                                <i class="fa-solid fa-chart-area"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="feature1_title">Análisis de Tendencias</h4>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-1" data-i18n="feature1_description">Detecta picos de insatisfacción antes de que se vuelvan virales.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0 text-[#38B000] dark:text-green-400 text-xl">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="feature2_title">Categorización Automática</h4>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-1" data-i18n="feature2_description">IA etiqueta reseñas por temas: "Precio", "Calidad", "Personal", etc.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center flex-shrink-0 text-[#FF8A00] dark:text-orange-400 text-xl">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="feature3_title">Alertas Inteligentes</h4>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-1" data-i18n="feature3_description">Recibe notificaciones instantáneas cuando una reseña crítica requiere atención.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: feature-showoff -->
+
+    <!-- START SECTION: free-analysis -->
+    <section id="free-analysis" class="py-24 bg-[#004AAD] relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#00C4FF]/30 blur-3xl rounded-full -mr-20 -mt-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-white">
+                    <div class="inline-block px-3 py-1 bg-[#00C4FF]/20 rounded-full text-[#00C4FF] text-xs font-bold mb-4 border border-[#00C4FF]/30">
+                        <span data-i18n="free_analysis_badge">OFERTA LIMITADA</span>
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
+                        <span data-i18n="free_analysis_title_part1">Obtén tu Informe de Reputación</span> <span class="text-[#00C4FF]" data-i18n="free_analysis_title_part2">Gratuito</span>
+                    </h2>
+                    <p class="text-blue-100 text-lg mb-8" data-i18n="free_analysis_subtitle">
+                        Descubre qué dicen tus clientes realmente. Te enviaremos un análisis detallado valorado en 300€ con insights accionables.
+                    </p>
+                    
+                    <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm border border-white/10">
+                        <h4 class="font-bold text-lg mb-4 flex items-center">
+                            <i class="fa-solid fa-file-lines mr-2 text-[#00C4FF]"></i> <span data-i18n="free_analysis_includes_title">Tu informe incluye:</span>
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-blue-50">
+                                <i class="fa-solid fa-check-circle text-[#38B000] mr-3"></i> <span data-i18n="free_analysis_includes1">Puntuación de salud de marca (Brand Health Score)</span>
+                            </li>
+                            <li class="flex items-center text-sm text-blue-50">
+                                <i class="fa-solid fa-check-circle text-[#38B000] mr-3"></i> <span data-i18n="free_analysis_includes2">Análisis de sentimiento de últimas 100 reseñas</span>
+                            </li>
+                            <li class="flex items-center text-sm text-blue-50">
+                                <i class="fa-solid fa-check-circle text-[#38B000] mr-3"></i> <span data-i18n="free_analysis_includes3">Top 3 áreas de mejora urgente</span>
+                            </li>
+                            <li class="flex items-center text-sm text-blue-50">
+                                <i class="fa-solid fa-check-circle text-[#38B000] mr-3"></i> <span data-i18n="free_analysis_includes4">Benchmarking básico vs competidores</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lead Form Card -->
+                <div class="bg-white dark:bg-[#1E1E1E] rounded-2xl p-8 shadow-2xl relative">
+                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-[#FF8A00] rounded-full flex items-center justify-center text-white font-bold text-center text-sm shadow-lg transform rotate-12 hidden lg:flex flex-col">
+                        <span>GRATIS</span>
+                        <span class="text-xs font-normal opacity-90">x tiempo limitado</span>
+                    </div>
+
+                    <form id="contact-form" method="POST" class="space-y-5">
+                        <div id="form-message" class="hidden p-4 rounded-lg mb-6"></div>
+
+                        
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-i18n="form_title">Solicitud de análisis</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="form_subtitle">Completa los datos para recibir tu informe en 24h.</p>
+                        </div>
+
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre Completo</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fa-solid fa-user text-gray-400"></i>
+                                </div>
+                                <input type="text" id="nombre" name="nombre" required aria-required="true" aria-label="Nombre Completo" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#004AAD] focus:border-[#004AAD] transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400" placeholder="Ej. Juan Pérez">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="negocio" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="form_field_company">Nombre de la Empresa</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fa-solid fa-building text-gray-400"></i>
+                                </div>
+                                <input type="text" id="negocio" name="negocio" required aria-required="true" aria-label="Nombre de la Empresa" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#004AAD] focus:border-[#004AAD] transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400" placeholder="Ej. Hotel VistaMar" data-i18n-placeholder="form_company_placeholder">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="google_maps" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="form_field_maps">Enlace a Google Maps (Opcional)</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fa-solid fa-map-location-dot text-gray-400"></i>
+                                </div>
+                                <input type="url" id="google_maps" name="google_maps" aria-label="Enlace a Google Maps" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#004AAD] focus:border-[#004AAD] transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400" placeholder="https://maps.google.com/..." data-i18n-placeholder="form_maps_placeholder">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="form_field_email">Email Corporativo</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fa-solid fa-envelope text-gray-400"></i>
+                                </div>
+                                <input type="email" id="email" name="email" required aria-required="true" aria-label="Email Corporativo" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#004AAD] focus:border-[#004AAD] transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400" placeholder="tu@empresa.com" data-i18n-placeholder="form_email_placeholder">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="mensaje" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="form_field_message">Mensaje</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-start pt-3 pointer-events-none">
+                                    <i class="fa-solid fa-message text-gray-400"></i>
+                                </div>
+                                <textarea id="mensaje" name="mensaje" rows="4" required aria-required="true" aria-label="Mensaje" minlength="14" class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#004AAD] focus:border-[#004AAD] transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 resize-none" placeholder="Cuéntanos más sobre tu necesidad..." data-i18n-placeholder="form_message_placeholder"></textarea>
+                            </div>
+                        </div>
+                         
+                        <div class="mb-4">
+                          <label class="flex items-start gap-2 text-sm md:text-base leading-snug text-gray-700 dark:text-gray-300">
+                             <input type="checkbox" id="rgpd" name="rgpd" required class="mt-1">
+                                <span data-i18n="form_privacy_text">Acepto la <a href="politica-privacidad.html" class="text-[#004AAD] hover:underline">política de privacidad</a> y los <a href="terminos-condiciones.html" class="text-[#004AAD] hover:underline">términos y condiciones</a>.</span>
+                          </label>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" id="submit-btn" role="button" tabindex="0" class="w-full bg-[#004AAD] text-white font-bold py-4 rounded-lg hover:bg-[#003885] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                <span data-i18n="form_submit_button">Analizar mi Reputación Ahora</span>
+                            </button>
+                            <p class="text-xs text-gray-400 mt-3 text-center" data-i18n="form_privacy_note">
+                                Al hacer clic, aceptas nuestra política de privacidad. Tus datos están 100% seguros.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: free-analysis -->
+
+    <!-- START SECTION: closing-cta -->
+    <section class="py-20 bg-gray-50 dark:bg-[#1E1E1E] text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6" data-i18n="closing_title">¿Listo para tomar el control?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-10" data-i18n="closing_subtitle">
+                Deja de perder clientes por reseñas que no entiendes. Únete a las empresas que usan datos para crecer.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-[#004AAD] hover:bg-[#003885] text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" data-i18n="closing_cta_demo">
+                    Agendar Demo de 15 min
+                </a>
+                <a href="#" class="px-8 py-3 rounded-lg font-bold text-[#4A4A4A] dark:text-[#E0E0E0] hover:text-[#004AAD] dark:hover:text-[#00C4FF] transition-colors border-2 border-[#4A4A4A] dark:border-gray-600" data-i18n="closing_cta_plans">
+                    Más información sobre planes
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: closing-cta -->
+
+
+
+    <!-- START SECTION: faqs -->
+    <section id="faqs" class="py-24 bg-gray-50 dark:bg-[#0A0A0A]">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Preguntas Frecuentes</h2>
+
+            <div class="space-y-6">
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿Qué es Analytee y para qué sirve?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Analytee es una plataforma que analiza reseñas de Google Maps para ayudarte a entender qué dicen tus clientes, detectar problemas reales y mejorar tu reputación online.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿Cómo obtiene Analytee las reseñas?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Utilizamos tu Google Business Profile o tu Place ID para extraer y procesar todas tus reseñas de forma segura y automática.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿Qué beneficios obtengo al analizar mis reseñas?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Podrás identificar patrones, mejorar la calidad del servicio, detectar incidencias repetidas y tomar decisiones basadas en datos reales de tus clientes.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿Necesito conocimientos técnicos?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">No, la plataforma está diseñada para que cualquier persona pueda usarla sin conocimientos técnicos. Solo ingresas tu Place ID y listo.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿El análisis es automático?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Sí, el sistema procesa todas tus reseñas utilizando IA avanzada para clasificar sentimientos, destacar temas importantes y generar insights.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-[#1E1E1E] shadow rounded-lg">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">¿Qué tipo de negocios pueden usar Analytee?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Cualquier negocio con ficha en Google Maps: restaurantes, tiendas, carpinterías, clínicas, servicios profesionales, talleres, etc.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- END SECTION: faqs -->
+</main>
+<!-- END SECTION: Main Content -->
+
+<!-- ========================= -->
+<!-- SECTION: Footer (ID: footer) -->
+<!-- ========================= -->
+<!-- START SECTION: footer -->
+<footer id="footer" class="bg-[#4A4A4A] text-white py-12 border-t border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center mb-4">
+                    <img src="images/logo.png" alt="Logo de Analytee" class="w-8 h-8 object-contain mr-2" loading="lazy" />
+                    <span class="font-bold text-xl tracking-tight">Analytee</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="footer_description">
+                    Plataforma líder en gestión de reputación online y análisis de experiencia de cliente impulsada por IA.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-lg mb-4" data-i18n="footer_product_title">Producto</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_product_features">Características</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_product_pricing">Precios</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_product_cases">Casos de Uso</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_product_api">API</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg mb-4" data-i18n="footer_resources_title">Recursos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_resources_blog">Blog</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_resources_guides">Guías ORM</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_resources_webinars">Webinars</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_resources_support">Soporte</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg mb-4" data-i18n="footer_legal_title">Legal</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="politica-privacidad.html" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_legal_privacy">Privacidad</a></li>
+                    <li><a href="terminos-condiciones.html" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_legal_terms">Términos</a></li>
+                    <li><a href="politica-cookies.html" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_legal_cookies">Cookies</a></li>
+                    <li><a href="#" class="hover:text-[#00C4FF] transition-colors" data-i18n="footer_legal_security">Seguridad</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm text-gray-500 text-center md:text-left mb-4 md:mb-0" data-i18n="footer_copyright">
+                &copy; 2024 Analytee Inc. Todos los derechos reservados.
+            </p>
+            <div class="text-sm text-gray-500 flex items-center">
+                <i class="fa-solid fa-globe mr-2"></i> <span data-i18n="footer_language">Español</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END SECTION: footer -->
+
+<!-- ========================= -->
+<!-- SECTION: Cookie Banner (ID: cookie-banner) -->
+<!-- ========================= -->
+<!-- START SECTION: cookie-banner - CONSOLIDATED GDPR COMPLIANT -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 text-white p-4 z-50 transform transition-transform duration-300 translate-y-full" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description" aria-live="polite">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+        <div class="mb-4 md:mb-0 md:mr-8">
+            <h2 id="cookie-title" class="sr-only">Consentimiento de Cookies</h2>
+            <p id="cookie-description" class="text-sm" data-i18n="cookie_message">
+                Usamos cookies para mejorar tu experiencia en nuestro sitio. Al continuar navegando, aceptas nuestra
+                <a href="politica-cookies.html" class="text-[#00C4FF] hover:underline" aria-label="Leer nuestra política de cookies completa">política de cookies</a>.
+            </p>
+        </div>
+        <div class="flex space-x-4" role="group" aria-label="Opciones de consentimiento de cookies">
+            <button id="cookie-accept" class="bg-[#004AAD] text-white px-6 py-2 rounded-full hover:bg-[#003885] transition font-medium min-h-[44px] min-w-[120px] focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-[#00C4FF]" data-i18n="cookie_accept" aria-describedby="cookie-description">
+                Aceptar todas
+            </button>
+            <button id="cookie-reject" class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-600 transition font-medium min-h-[44px] min-w-[120px] focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-[#00C4FF]" data-i18n="cookie_reject" aria-describedby="cookie-description">
+                Rechazar no esenciales
+            </button>
+            <button id="cookie-preferences" class="text-white hover:text-gray-300 transition font-medium underline min-h-[44px] focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-[#00C4FF]" aria-describedby="cookie-description">
+                Preferencias
+            </button>
+        </div>
+    </div>
+</div>
+<!-- END SECTION: cookie-banner -->
+
+<!-- Modal éxito – estilo original -->
+<div id="success-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm items-center justify-center z-50">
+    <div id="success-box"
+         class="bg-neutral-900/80 text-white p-8 rounded-2xl shadow-2xl max-w-sm text-center
+                opacity-0 scale-75 transition-all duration-300">
+        <div class="text-green-400 text-5xl mb-4">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <p id="success-message" class="text-lg font-semibold leading-relaxed"></p>
+    </div>
+</div>
+
+
+<!-- ========================= -->
+<!-- SECTION: Scripts -->
+<!-- ========================= -->
+<!-- START SECTION: contact-form-script -->
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formMessage = document.getElementById('form-message');
+    const submitBtn = document.getElementById('submit-btn');
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const negocio = document.getElementById('negocio').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const rgpd = document.getElementById('rgpd').checked;
+
+    if (!rgpd) {
+        formMessage.classList.remove('hidden');
+        formMessage.textContent = 'Debes aceptar la política de privacidad y los términos y condiciones.';
+        formMessage.className = 'block p-4 rounded-lg mb-6 bg-red-100 text-red-700';
+        return;
+    }
+
+    // Mostrar "Enviando..." en el botón
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Enviando...';
+
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('email', email);
+    formData.append('negocio', negocio);
+    formData.append('mensaje', mensaje);
+    formData.append('rgpd', '1');
+
+    try {
+        const response = await fetch('https://analytee.com/backend/send-mail.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        // Restaurar botón
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        if (result.status === 'ok') {
+            // Mostrar modal de éxito
+            const nombreUsuario = nombre;
+            const message = window.translationSuccess.replace("{name}", nombreUsuario);
+
+            document.getElementById("success-message").innerHTML = message;
+
+            const modal = document.getElementById("success-modal");
+            const box = document.getElementById("success-box");
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+            setTimeout(() => {
+                box.classList.remove("scale-75", "opacity-0");
+                box.classList.add("scale-100", "opacity-100");
+            }, 20);
+
+            setTimeout(() => {
+                box.classList.remove("scale-100", "opacity-100");
+                box.classList.add("scale-75", "opacity-0");
+
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                }, 300);
+            }, 3000);
+
+            // Resetear formulario
+            document.getElementById('contact-form').reset();
+
+        } else {
+            // Mostrar mensaje de error en el form-message
+            formMessage.classList.remove('hidden');
+            formMessage.textContent = 'Error al enviar el mensaje: ' + result.message;
+            formMessage.className = 'block p-4 rounded-lg mb-6 bg-red-100 text-red-700';
+
+            // Ocultar mensaje de error después de 5 segundos
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+    } catch (error) {
+        // Restaurar botón
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        // Mostrar mensaje de error
+        formMessage.classList.remove('hidden');
+        formMessage.textContent = 'No se pudo conectar al servidor.';
+        formMessage.className = 'block p-4 rounded-lg mb-6 bg-red-100 text-red-700';
+
+        // Ocultar mensaje de error después de 5 segundos
+        setTimeout(() => {
+            formMessage.classList.add('hidden');
+        }, 5000);
+    }
+});
+</script>
+<!-- END SECTION: contact-form-script -->
+
+
+<!-- START SECTION: cookies-script GDPR Compliant - CONSOLIDATED -->
+<script src="src/scripts/cookies-gdpr.js" defer></script>
+<script src="src/scripts/main.js" defer></script>
+<!-- END SECTION: cookies-script -->
+
+<!-- START SECTION: theme-toggle-script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+
+    // Función correcta para actualizar iconos
+    function updateIcons() {
+        if (html.classList.contains("dark")) {
+            // Tema oscuro → mostrar sol
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
+
+            // Animación
+            sunIcon.classList.add("scale-125", "rotate-180");
+            setTimeout(() => sunIcon.classList.remove("scale-125", "rotate-180"), 300);
+
+        } else {
+            // Tema claro → mostrar luna
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.remove("hidden");
+
+            // Animación
+            moonIcon.classList.add("scale-125", "rotate-180");
+            setTimeout(() => moonIcon.classList.remove("scale-125", "rotate-180"), 300);
+        }
+    }
+
+    // Aplicar tema inicial
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+
+    updateIcons();
+
+    // Alternancia manual
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+
+        // Animación del botón
+        themeToggle.classList.add("scale-110");
+        setTimeout(() => themeToggle.classList.remove("scale-110"), 150);
+
+        // Guardar preferencia
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+
+        updateIcons();
+    });
+});
+</script>
+<!-- END SECTION: theme-toggle-script -->
+
+<!-- START SECTION: mobile-menu-script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const mobileBtn = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const iconMenu = document.getElementById("icon-menu");
+    const iconClose = document.getElementById("icon-close");
+    const body = document.body;
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    
+    let previousFocusElement = null;
+    let focusableMenuElements = [];
+
+    // Función para manejar el foco atrapado (focus trap)
+    function trapFocus(element) {
+        focusableMenuElements = element.querySelectorAll(focusableElements);
+        const firstFocusableEl = focusableMenuElements[0];
+        const lastFocusableEl = focusableMenuElements[focusableMenuElements.length - 1];
+
+        element.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableEl) {
+                        lastFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableEl) {
+                        firstFocusableEl.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+            
+            // Cerrar menú con Escape
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Función para abrir el menú móvil
+    function openMobileMenu() {
+        mobileMenu.classList.remove("hidden");
+        iconMenu.classList.add("hidden");
+        iconClose.classList.remove("hidden");
+        
+        // Guardar el elemento con foco actual
+        previousFocusElement = document.activeElement;
+        
+        // Prevenir scroll en el body
+        body.style.overflow = "hidden";
+        body.style.position = "fixed";
+        body.style.top = "0";
+        body.style.width = "100%";
+        
+        // Establecer foco en el primer elemento del menú
+        setTimeout(() => {
+            if (focusableMenuElements.length > 0) {
+                focusableMenuElements[0].focus();
+            }
+        }, 100);
+        
+        // Activar focus trap
+        trapFocus(mobileMenu);
+        
+        // Mejorar accesibilidad con ARIA
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        mobileBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    // Función para cerrar el menú móvil
+    function closeMobileMenu() {
+        mobileMenu.classList.add("hidden");
+        iconMenu.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+        
+        // Restaurar scroll del body
+        body.style.overflow = "";
+        body.style.position = "";
+        body.style.top = "";
+        body.style.width = "";
+        
+        // Restaurar foco al elemento anterior
+        if (previousFocusElement) {
+            previousFocusElement.focus();
+        }
+        
+        // Mejorar accesibilidad con ARIA
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Event listener para el botón del menú móvil
+    mobileBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+
+    // Cerrar menú al hacer clic en enlaces (navegación)
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    });
+
+    // Cerrar menú al cambiar tamaño de ventana a desktop
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    mediaQuery.addListener(function(e) {
+        if (e.matches && !mobileMenu.classList.contains("hidden")) {
+            closeMobileMenu();
+        }
+    });
+
+    // Mejorar accesibilidad inicial
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+});
+</script>
+<!-- END SECTION: mobile-menu-script -->
+
+<!-- START SECTION: translations-script -->
+<script>
+// =========================
+// SISTEMA DE TRADUCCIÓN
+// =========================
+
+// 1. Diccionario de traducción ES / EN
+const translations = {
+  es: {
+    // Accessibility
+    "accessibility_skip_content": "Saltar al contenido",
+    
+    // Header
+    "header_cta_free_analysis": "Solicita Análisis Gratuito",
+    
+    // Mobile Menu
+    "mobile_cta_free_analysis": "Solicita Análisis Gratuito",
+    
+    // Hero Section
+    "hero_new_feature": "Nuevo: Motor de Análisis IA v2.0",
+    "hero_title_part1": "Transforma tus Reseñas en",
+    "hero_title_part2": "Estrategias de Crecimiento",
+    "hero_description": "Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.",
+    "hero_main_cta": "Solicita tu Informe Gratuito",
+    "hero_secondary_cta": "Ver Casos de Éxito",
+    "hero_benefit1": "Sin tarjeta de crédito",
+    "hero_benefit2": "Resultados en 24h",
+    "hero_benefit3": "+500 Empresas Analizadas",
+    
+    // Dashboard Mockup
+    "dashboard_reputation_summary": "Resumen de Reputación",
+    "dashboard_last_30_days": "Últimos 30 días",
+    "dashboard_excellent_rating": "Excelente +4.8",
+    "dashboard_positive_sentiment": "Sentimiento Positivo",
+    "dashboard_moderate_risk": "Riesgo Moderado",
+    "dashboard_critical": "Crítico",
+    "dashboard_ai_insight_label": "Insight IA Detectado",
+    "dashboard_ai_insight_text": "\"Tiempo de espera\" afecta NPS",
+    
+    // Logos Section
+    "logos_title": "Empresas que confían en nuestra tecnología",
+    
+    // Pain Points Section
+    "painpoints_title": "¿Tu reputación online te está costando clientes?",
+    "painpoints_subtitle": "La gestión manual de reseñas es ineficiente y lenta. Mientras ignoras los datos, tu competencia toma ventaja.",
+    "painpoints1_title": "Puntos Ciegos Operativos",
+    "painpoints1_description": "Sin análisis de datos, no sabes realmente por qué los clientes se quejan. ¿Es el servicio? ¿El producto? ¿El precio? Adivinar sale caro.",
+    "painpoints2_title": "Gestión Reactiva y Lenta",
+    "painpoints2_description": "Responder reseñas días tarde daña tu imagen. La falta de alertas en tiempo real permite que una crisis pequeña se convierta en un desastre de PR.",
+    "painpoints3_title": "Pérdida de Oportunidades",
+    "painpoints3_description": "Cada reseña negativa sin resolver es un cliente perdido para siempre. Y peor aún, disuade a cientos de potenciales clientes que te buscan en Google.",
+    
+    // Methodology Section
+    "methodology_label": "Metodología Analytee",
+    "methodology_title_part1": "De Datos Caóticos a",
+    "methodology_title_part2": "Estrategia Clara",
+    "methodology_subtitle": "Nuestro motor de IA procesa el lenguaje natural para entender el sentimiento detrás de cada palabra.",
+    "methodology_step1_title": "Recolección & Análisis",
+    "methodology_step1_description": "Conectamos con tu perfil de Google Business y extraemos años de histórico. Nuestra IA categoriza cada mención por tema (precio, atención, limpieza, etc.).",
+    "methodology_step1_feature1": "Scraping seguro de datos",
+    "methodology_step1_feature2": "NLP (Procesamiento de Lenguaje Natural)",
+    "methodology_step2_title": "Diagnóstico Semáforo",
+    "methodology_step2_description": "Visualiza al instante qué áreas de tu negocio están en Verde (Éxito), Naranja (Alerta) o Rojo (Crítico).",
+    "methodology_step2_feature1": "Matriz de Impacto vs Urgencia",
+    "methodology_step2_feature2": "Detección de anomalías",
+    "methodology_step3_title": "Plan de Acción",
+    "methodology_step3_description": "No solo te damos datos, te damos soluciones. Recibe un informe con pasos concretos para revertir tendencias negativas y potenciar lo positivo.",
+    "methodology_step3_feature1": "Recomendaciones operativas",
+    "methodology_step3_feature2": "Plantillas de respuesta IA",
+    
+    // Navigation
+    "nosotros": "Nosotros",
+    "metodologia": "Metodología",
+    "casos-exito": "Casos de Éxito",
+    "contacto": "Contacto",
+    
+    // Sobre Nosotros Section
+    "sn-h1": "Consultoría Estratégica en Reputación Online (ORM) y CX Impulsada por IA",
+    "sn-intro": "En Analytee transformamos grandes volúmenes de reseñas en decisiones claras y accionables.",
+    "sn-punto1": "Identificamos insights ocultos que las empresas no detectan manualmente.",
+    "sn-punto2": "Detectamos reseñas fraudulentas y protegemos la credibilidad del perfil.",
+    "sn-punto3": "Analizamos sentimiento con precisión +96% optimizada para español.",
+    "sn-punto4": "Priorizamos acciones mediante Matriz Urgencia–Impacto.",
+    "sn-metodo": "Combinamos IA + análisis humano para generar informes estratégicos.",
+    "sn-punto5": "Categorización automática por temas de fricción.",
+    "sn-punto6": "Informe ejecutivo con KPIs y plan de acción.",
+    "sn-punto7": "Metodología aplicada tanto a grandes entidades como CaixaBank.",
+    "sn-cta": "Solicita tu Análisis Gratuito",
+    
+    // Cases Section
+    "cases_title": "Resultados Reales en Sectores Exigentes",
+    "cases_subtitle": "Descubre cómo empresas líderes utilizan Analytee para mejorar su CX.",
+    "cases_view_all": "Ver todos los casos",
+    "cases1_category": "Hostelería",
+    "cases1_title": "Cadena Hotelera \"VistaMar\"",
+    "cases1_metric1": "NPS Score",
+    "cases1_metric2": "Quejas Recurrentes",
+    "cases1_metric3": "Rating Google",
+    "cases1_testimonial": "\"Analytee nos permitió identificar que el 'Check-in lento' era la causa del 60% de nuestras reseñas negativas. Implementamos cambios operativos y el impacto fue inmediato.\"",
+    "cases1_name": "Carlos M.",
+    "cases1_role": "Director de Operaciones",
+    "cases2_category": "Banca Retail",
+    "cases2_title": "Banco Futuro",
+    "cases2_metric1": "Tiempo Respuesta",
+    "cases2_metric2": "Tasa Respuesta",
+    "cases2_metric3": "Conversión",
+    "cases2_testimonial": "\"La capacidad de segmentar reseñas por sucursal nos dio una visión granular que ningún otro software nos ofrecía. Esencial para nuestra estrategia CX.\"",
+    "cases2_name": "Ana P.",
+    "cases2_role": "Directora de Marketing",
+    "cases_mobile_view_all": "Ver todos los casos",
+    
+    // Feature Section
+    "feature_title": "Visualiza tus KPIs en Tiempo Real",
+    "feature_subtitle": "Nuestro dashboard interactivo te permite monitorear la salud de tu marca con métricas precisas.",
+    "feature1_title": "Análisis de Tendencias",
+    "feature1_description": "Detecta picos de insatisfacción antes de que se vuelvan virales.",
+    "feature2_title": "Categorización Automática",
+    "feature2_description": "IA etiqueta reseñas por temas: \"Precio\", \"Calidad\", \"Personal\", etc.",
+    "feature3_title": "Alertas Inteligentes",
+    "feature3_description": "Recibe notificaciones instantáneas cuando una reseña crítica requiere atención.",
+    
+    // Free Analysis Section
+    "free_analysis_badge": "OFERTA LIMITADA",
+    "free_analysis_title_part1": "Obtén tu Informe de Reputación",
+    "free_analysis_title_part2": "Gratuito",
+    "free_analysis_subtitle": "Descubre qué dicen tus clientes realmente. Te enviaremos un análisis detallado valorado en 300€ con insights accionables.",
+    "free_analysis_includes_title": "Tu informe incluye:",
+    "free_analysis_includes1": "Puntuación de salud de marca (Brand Health Score)",
+    "free_analysis_includes2": "Análisis de sentimiento de últimas 100 reseñas",
+    "free_analysis_includes3": "Top 3 áreas de mejora urgente",
+    "free_analysis_includes4": "Benchmarking básico vs competidores",
+    
+    // Form
+    "form_title": "Solicitud de análisis",
+    "form_subtitle": "Completa los datos para recibir tu informe en 24h.",
+    "form_field_company": "Nombre de la Empresa",
+    "form_field_maps": "Enlace a Google Maps (Opcional)",
+    "form_field_email": "Email Corporativo",
+    "form_field_message": "Mensaje",
+    "form_message_placeholder": "Cuéntanos más sobre tu necesidad...",
+    "form_privacy_text": "Acepto la <a href=\"politica-privacidad.html\" class=\"text-[#004AAD] hover:underline\">política de privacidad</a> y los <a href=\"terminos-condiciones.html\" class=\"text-[#004AAD] hover:underline\">términos y condiciones</a>.",
+    "form_submit_button": "Analizar mi Reputación Ahora",
+    "form_privacy_note": "Al hacer clic, aceptas nuestra política de privacidad. Tus datos están 100% seguros.",
+    "form_success": "{name}, hemos recibido tu solicitud. Nuestro equipo se comunicará contigo en muy poco tiempo.",
+    
+    // Closing CTA
+    "closing_title": "¿Listo para tomar el control?",
+    "closing_subtitle": "Deja de perder clientes por reseñas que no entiendes. Únete a las empresas que usan datos para crecer.",
+    "closing_cta_demo": "Agendar Demo de 15 min",
+    "closing_cta_plans": "Más información sobre planes",
+    
+    // Footer
+    "footer_description": "Plataforma líder en gestión de reputación online y análisis de experiencia de cliente impulsada por IA.",
+    "footer_product_title": "Producto",
+    "footer_product_features": "Características",
+    "footer_product_pricing": "Precios",
+    "footer_product_cases": "Casos de Uso",
+    "footer_product_api": "API",
+    "footer_resources_title": "Recursos",
+    "footer_resources_blog": "Blog",
+    "footer_resources_guides": "Guías ORM",
+    "footer_resources_webinars": "Webinars",
+    "footer_resources_support": "Soporte",
+    "footer_legal_title": "Legal",
+    "footer_legal_privacy": "Privacidad",
+    "footer_legal_terms": "Términos",
+    "footer_legal_cookies": "Cookies",
+    "footer_legal_security": "Seguridad",
+    "footer_copyright": "&copy; 2024 Analytee Inc. Todos los derechos reservados.",
+    "footer_language": "Español",
+    
+    // Cookie Banner
+    "cookie_message": "Usamos cookies para mejorar tu experiencia en nuestro sitio. Al continuar navegando, aceptas nuestra <a href=\"politica-cookies.html\" class=\"text-[#00C4FF] hover:underline\">política de cookies</a>.",
+    "cookie_accept": "Aceptar todas",
+    "cookie_reject": "Rechazar no esenciales"
+  },
+
+  en: {
+    // Accessibility
+    "accessibility_skip_content": "Skip to main content",
+    
+    // Header
+    "header_cta_free_analysis": "Request Free Analysis",
+    
+    // Mobile Menu
+    "mobile_cta_free_analysis": "Request Free Analysis",
+    
+    // Hero Section
+    "hero_new_feature": "New: AI Analysis Engine v2.0",
+    "hero_title_part1": "Transform Your Reviews into",
+    "hero_title_part2": "Growth Strategies",
+    "hero_description": "We use Artificial Intelligence to analyze thousands of Google Maps reviews, turning customer feedback into prioritized action plans to improve your reputation and increase sales.",
+    "hero_main_cta": "Request Your Free Report",
+    "hero_secondary_cta": "View Success Stories",
+    "hero_benefit1": "No credit card required",
+    "hero_benefit2": "Results in 24h",
+    "hero_benefit3": "+500 Companies Analyzed",
+    
+    // Dashboard Mockup
+    "dashboard_reputation_summary": "Reputation Summary",
+    "dashboard_last_30_days": "Last 30 days",
+    "dashboard_excellent_rating": "Excellent +4.8",
+    "dashboard_positive_sentiment": "Positive Sentiment",
+    "dashboard_moderate_risk": "Moderate Risk",
+    "dashboard_critical": "Critical",
+    "dashboard_ai_insight_label": "AI Insight Detected",
+    "dashboard_ai_insight_text": "\"Wait time\" affects NPS",
+    
+    // Logos Section
+    "logos_title": "Companies that trust our technology",
+    
+    // Pain Points Section
+    "painpoints_title": "Is your online reputation costing you customers?",
+    "painpoints_subtitle": "Manual review management is inefficient and slow. While you ignore the data, your competition takes advantage.",
+    "painpoints1_title": "Operational Blind Spots",
+    "painpoints1_description": "Without data analysis, you don't really know why customers complain. Is it the service? The product? The price? Guessing is expensive.",
+    "painpoints2_title": "Reactive and Slow Management",
+    "painpoints2_description": "Responding to reviews days late damages your image. Lack of real-time alerts allows a small crisis to become a PR disaster.",
+    "painpoints3_title": "Lost Opportunities",
+    "painpoints3_description": "Every unresolved negative review is a lost customer forever. And worse, it deters hundreds of potential customers searching for you on Google.",
+    
+    // Methodology Section
+    "methodology_label": "Analytee Methodology",
+    "methodology_title_part1": "From Chaotic Data to",
+    "methodology_title_part2": "Clear Strategy",
+    "methodology_subtitle": "Our AI engine processes natural language to understand the sentiment behind every word.",
+    "methodology_step1_title": "Collection & Analysis",
+    "methodology_step1_description": "We connect to your Google Business profile and extract years of history. Our AI categorizes every mention by topic (price, service, cleanliness, etc.).",
+    "methodology_step1_feature1": "Secure data scraping",
+    "methodology_step1_feature2": "NLP (Natural Language Processing)",
+    "methodology_step2_title": "Traffic Light Diagnosis",
+    "methodology_step2_description": "Instantly visualize which areas of your business are in Green (Success), Orange (Alert) or Red (Critical).",
+    "methodology_step2_feature1": "Impact vs Urgency Matrix",
+    "methodology_step2_feature2": "Anomaly detection",
+    "methodology_step3_title": "Action Plan",
+    "methodology_step3_description": "We don't just give you data, we give you solutions. Receive a report with concrete steps to reverse negative trends and enhance the positive.",
+    "methodology_step3_feature1": "Operational recommendations",
+    "methodology_step3_feature2": "AI response templates",
+    
+    // Navigation
+    "nosotros": "About Us",
+    "metodologia": "Methodology",
+    "casos-exito": "Case Studies",
+    "contacto": "Contact",
+    
+    // Sobre Nosotros Section
+    "sn-h1": "Strategic Consulting in ORM & CX Powered by AI",
+    "sn-intro": "At Analytee we transform large volumes of reviews into clear and actionable decisions.",
+    "sn-punto1": "We identify hidden insights impossible to detect manually.",
+    "sn-punto2": "We detect fraudulent reviews and protect your profile credibility.",
+    "sn-punto3": "Sentiment analysis with +96% precision optimized for Spanish.",
+    "sn-punto4": "We prioritize actions using an Urgency–Impact Matrix.",
+    "sn-metodo": "We combine AI + human analysis to generate strategic reports.",
+    "sn-punto5": "Automatic categorization by friction themes.",
+    "sn-punto6": "Executive report with KPIs and action plan.",
+    "sn-punto7": "Methodology applied to major entities like CaixaBank.",
+    "sn-cta": "Request Your Free Audit",
+    
+    // Cases Section
+    "cases_title": "Real Results in Demanding Sectors",
+    "cases_subtitle": "Discover how leading companies use Analytee to improve their CX.",
+    "cases_view_all": "View all cases",
+    "cases1_category": "Hospitality",
+    "cases1_title": "\"VistaMar\" Hotel Chain",
+    "cases1_metric1": "NPS Score",
+    "cases1_metric2": "Recurrent Complaints",
+    "cases1_metric3": "Google Rating",
+    "cases1_testimonial": "\"Analytee allowed us to identify that 'Slow Check-in' was the cause of 60% of our negative reviews. We implemented operational changes and the impact was immediate.\"",
+    "cases1_name": "Carlos M.",
+    "cases1_role": "Operations Director",
+    "cases2_category": "Retail Banking",
+    "cases2_title": "Future Bank",
+    "cases2_metric1": "Response Time",
+    "cases2_metric2": "Response Rate",
+    "cases2_metric3": "Conversion",
+    "cases2_testimonial": "\"The ability to segment reviews by branch gave us a granular view that no other software offered us. Essential for our CX strategy.\"",
+    "cases2_name": "Ana P.",
+    "cases2_role": "Marketing Director",
+    "cases_mobile_view_all": "View all cases",
+    
+    // Feature Section
+    "feature_title": "Visualize Your KPIs in Real Time",
+    "feature_subtitle": "Our interactive dashboard allows you to monitor your brand's health with precise metrics.",
+    "feature1_title": "Trend Analysis",
+    "feature1_description": "Detect dissatisfaction peaks before they go viral.",
+    "feature2_title": "Automatic Categorization",
+    "feature2_description": "AI tags reviews by topics: \"Price\", \"Quality\", \"Staff\", etc.",
+    "feature3_title": "Smart Alerts",
+    "feature3_description": "Receive instant notifications when a critical review requires attention.",
+    
+    // Free Analysis Section
+    "free_analysis_badge": "LIMITED OFFER",
+    "free_analysis_title_part1": "Get Your Free Reputation",
+    "free_analysis_title_part2": "Report",
+    "free_analysis_subtitle": "Discover what your customers really say. We'll send you a detailed analysis valued at €300 with actionable insights.",
+    "free_analysis_includes_title": "Your report includes:",
+    "free_analysis_includes1": "Brand Health Score",
+    "free_analysis_includes2": "Sentiment analysis of last 100 reviews",
+    "free_analysis_includes3": "Top 3 urgent improvement areas",
+    "free_analysis_includes4": "Basic benchmarking vs competitors",
+    
+    // Form
+    "form_title": "Request Audit",
+    "form_subtitle": "Complete the form to receive your report in 24h.",
+    "form_field_company": "Company Name",
+    "form_field_maps": "Google Maps Link (Optional)",
+    "form_field_email": "Corporate Email",
+    "form_field_message": "Message",
+    "form_message_placeholder": "Tell us more about your needs...",
+    "form_privacy_text": "I accept the <a href=\"politica-privacidad.html\" class=\"text-[#004AAD] hover:underline\">privacy policy</a> and <a href=\"terminos-condiciones.html\" class=\"text-[#004AAD] hover:underline\">terms and conditions</a>.",
+    "form_submit_button": "Analyze My Reputation Now",
+    "form_privacy_note": "By clicking, you accept our privacy policy. Your data is 100% secure.",
+    "form_success": "{name}, we have received your request. Our team will contact you very soon.",
+    
+    // Closing CTA
+    "closing_title": "Ready to take control?",
+    "closing_subtitle": "Stop losing customers due to reviews you don't understand. Join the companies that use data to grow.",
+    "closing_cta_demo": "Schedule 15-min Demo",
+    "closing_cta_plans": "More information about plans",
+    
+    // Footer
+    "footer_description": "Leading platform in online reputation management and customer experience analysis powered by AI.",
+    "footer_product_title": "Product",
+    "footer_product_features": "Features",
+    "footer_product_pricing": "Pricing",
+    "footer_product_cases": "Use Cases",
+    "footer_product_api": "API",
+    "footer_resources_title": "Resources",
+    "footer_resources_blog": "Blog",
+    "footer_resources_guides": "ORM Guides",
+    "footer_resources_webinars": "Webinars",
+    "footer_resources_support": "Support",
+    "footer_legal_title": "Legal",
+    "footer_legal_privacy": "Privacy",
+    "footer_legal_terms": "Terms",
+    "footer_legal_cookies": "Cookies",
+    "footer_legal_security": "Security",
+    "footer_copyright": "&copy; 2024 Analytee Inc. All rights reserved.",
+    "footer_language": "English",
+    
+    // Cookie Banner
+    "cookie_message": "We use cookies to improve your experience on our site. By continuing to browse, you accept our <a href=\"politica-cookies.html\" class=\"text-[#00C4FF] hover:underline\">cookie policy</a>.",
+    "cookie_accept": "Accept all",
+    "cookie_reject": "Reject non-essential"
+  }
+};
+
+// 2. Función principal que actualiza los textos
+function applyTranslations(lang) {
+  // Actualizar elementos con data-i18n
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      const value = translations[lang][key];
+      
+      // Si contiene HTML, usar innerHTML
+      if (value.includes('<') && value.includes('>')) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
+    }
+  });
+  
+  // Actualizar placeholders con data-i18n-placeholder
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+}
+
+// 3. Actualizar estilo visual del botón activo
+function updateActiveLangButton(lang) {
+  document.querySelectorAll(".btn-lang").forEach(btn => {
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("active-lang", isActive);
+    btn.style.opacity = isActive ? "1" : "0.5";
+  });
+}
+
+// Función adicional para actualizar textos por idioma
+function updateTextsByLang() {
+  const savedLang = localStorage.getItem("lang") || "es";
+  applyTranslations(savedLang);
+  updateActiveLangButton(savedLang);
+}
+
+// 4. Aplicar idioma al cargar la web
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("lang") || "es";
+  applyTranslations(savedLang);
+  updateActiveLangButton(savedLang);
+});
+
+// 5. Listeners de los botones (desktop y mobile)
+document.querySelectorAll(".btn-lang").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    localStorage.setItem("lang", lang);
+    applyTranslations(lang);
+    updateActiveLangButton(lang);
+  });
+});
+
+// Definir variable global para el mensaje de éxito
+window.translationSuccess = "{name}, hemos recibido tu solicitud. Nuestro equipo se comunicará contigo en muy poco tiempo.";
+
+// Sistema de traducciones mejorado para compatibilidad con CookieManager
+document.addEventListener('cookie-banner-loaded', (e) => {
+  // Aplicar traducciones al banner cuando se carga
+  const savedLang = localStorage.getItem("lang") || "es";
+  applyTranslations(savedLang);
+  updateActiveLangButton(savedLang);
+});
+
+// Escuchar cambios de idioma para actualizar el banner
+document.querySelectorAll(".btn-lang").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    localStorage.setItem("lang", lang);
+    applyTranslations(lang);
+    updateActiveLangButton(lang);
+    
+    // Notificar al sistema de cookies sobre el cambio de idioma
+    if (window.cookieManager && window.cookieManager.banner) {
+      const event = new CustomEvent('language-changed', {
+        detail: { language: lang }
+      });
+      document.dispatchEvent(event);
+    }
+  });
+});
+</script>
+<!-- END SECTION: translations-script -->
+
+<!-- Scripts for Charts (Plotly - Deferred Loading) -->
+<script defer src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function() {
+  // Ensure Plotly is loaded before rendering charts
+  if (typeof window.Plotly === 'undefined') {
+    console.warn('Plotly not yet loaded');
+    return;
+  }
+    try {
+        // Hero Chart: Simple Area Chart showing growth
+        const heroData = [{
+            x: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            y: [3.8, 4.0, 4.1, 4.3, 4.5, 4.8],
+            type: 'scatter',
+            mode: 'lines',
+            fill: 'tozeroy',
+            line: { color: '#004AAD', width: 3 },
+            fillcolor: 'rgba(0, 74, 173, 0.1)'
+        }];
+
+        const heroLayout = {
+            title: { text: 'Evolución de Rating Promedio', font: { size: 14, color: '#4A4A4A' } },
+            margin: { t: 40, r: 20, b: 30, l: 30 },
+            xaxis: { showgrid: false, zeroline: false },
+            yaxis: { range: [3.5, 5], showgrid: true, gridcolor: '#f0f0f0' },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            height: 250,
+            showlegend: false
+        };
+
+        Plotly.newPlot('hero-chart', heroData, heroLayout, {responsive: true, displayModeBar: false, staticPlot: true});
+
+        // Feature Chart: Bar Chart showing sentiment by category
+        const featureData = [{
+            x: ['Atención', 'Limpieza', 'Precio', 'Rapidez', 'Ubicación'],
+            y: [85, 92, 60, 45, 95],
+            type: 'bar',
+            marker: {
+                color: ['#38B000', '#38B000', '#FF8A00', '#E71D36', '#38B000']
+            }
+        }];
+
+        const featureLayout = {
+            title: { text: 'Sentimiento por Categoría (%)', font: { size: 16, family: 'Fira Sans', color: '#4A4A4A' } },
+            margin: { t: 50, r: 30, b: 40, l: 40 },
+            yaxis: { title: 'Satisfacción (%)', range: [0, 100] },
+            plot_bgcolor: '#f9fafb',
+            paper_bgcolor: '#f9fafb',
+            height: 380
+        };
+
+        Plotly.newPlot('feature-chart', featureData, featureLayout, {responsive: true, displayModeBar: false, staticPlot: true});
+
+    } catch(e) {
+        console.error("Error rendering charts:", e);
+    }
+  }
+});
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+
+<FilesMatch "\.(env|config\.php)$">
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
