@@ -217,14 +217,29 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Analytee",
-    "url": "https://analytee.com/",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "Plataforma de análisis de reseñas de Google Maps con Inteligencia Artificial para estrategia ORM y CX.",
-    "image": "https://analytee.com/android-chrome-512x512.png",
-    "creator": { "@type": "Organization", "name": "Analytee" }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://analytee.com/#organization",
+        "name": "Analytee",
+        "url": "https://analytee.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://analytee.com/images/logo.png"
+        },
+        "email": "contacto@analytee.com"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://analytee.com/#service",
+        "name": "Análisis de Reseñas de Google con IA",
+        "provider": {
+          "@id": "https://analytee.com/#organization"
+        },
+        "description": "Utilizamos Inteligencia Artificial para analizar miles de reseñas de Google Maps, convirtiendo el feedback de clientes en planes de acción priorizados para mejorar tu reputación y aumentar ventas.",
+        "url": "https://analytee.com/"
+      }
+    ]
   }
   </script>
 </head>
